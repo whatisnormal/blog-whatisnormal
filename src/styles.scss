@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  font-size: .8rem;
+  overflow-x: hidden;
+  color: #50596c;
+  background: #fff;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'PT Sans', --apple-system,system-ui, BlinkMacSystemFont, sans-serif ;
+  font-weight: bold !important;
+}

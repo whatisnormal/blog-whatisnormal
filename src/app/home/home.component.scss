@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header{
+  line-height: 1.1 !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #3a414e !important;
+  text-align: center;
+  font-size: 3rem !important;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+h2{
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+a:visited {
+  color: #5fa1f2;
+}
+
+a {
+  text-decoration: none;
+  color: #3085ee;
+  outline: 0;
+}
