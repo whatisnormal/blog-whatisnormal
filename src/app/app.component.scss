@@ -1,6 +1,5 @@
-.main-section-container{
+main{
   margin-top: 1rem;
-  margin-inline: 10rem;
   height: 100%;
   width: 100%;
   margin-left: auto;
@@ -8,4 +7,6 @@
   text-align: left;
   padding: 2rem 0 2rem;
   max-width: 60rem;
+  padding-inline: 15px;
+
 }

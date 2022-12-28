@@ -1,0 +1,27 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: flex-start;
+}
+
+
+/* Responsiveness */
+@media (min-width: 768px) {
+
+
+  :host{
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  // .card{
+  //   flex-basis: 45%;
+  // }
+
+
+
+}

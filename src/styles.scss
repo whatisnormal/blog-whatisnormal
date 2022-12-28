@@ -1,26 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"); /* import font */
 
-html {
-  box-sizing: border-box;
-}
+// html {
+//   box-sizing: border-box;
+// }
+
+:root{
+  --white: #f9f9f9;
+  --black: #36383F;
+  --gray: #85888C;
+} /* variables*/
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
-  font-size: .8rem;
-  overflow-x: hidden;
-  color: #50596c;
-  background: #fff;
-  text-rendering: optimizeLegibility;
+  background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+  min-width: 300px;
+
+
+  // font-size: .8rem;
+  // overflow-x: hidden;
+  // color: #50596c;
+  // background: #fff;
+  // text-rendering: optimizeLegibility;
+
 }
 
-h1, h2, h3, h4, h5, h6{
-  font-family: 'PT Sans', --apple-system,system-ui, BlinkMacSystemFont, sans-serif ;
-  font-weight: bold !important;
+a{
+  text-decoration: none;
 }
+ul{
+  list-style: none;
+}
+
+// h1, h2, h3, h4, h5, h6{
+//   font-family: 'PT Sans', --apple-system,system-ui, BlinkMacSystemFont, sans-serif ;
+//   font-weight: bold !important;
+// }

@@ -17,10 +17,10 @@ export const APP_ROUTES: Route[] = [
   component: SandboxComponent
 }, */
 {
-  path: 'tutorials',
+  path: 'articles',
   loadChildren: () =>
-      import('./tutorials/tutorials.routes')
-          .then(m => m.TUT_ROUTES)
+      import('./articles/articles.routes')
+          .then(m => m.ARTICLES_ROUTES)
 },
 
 // Option 2: Directly Lazy Loading a Standalone Component

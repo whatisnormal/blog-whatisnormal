@@ -1,59 +1,118 @@
+/* Header https://blog.logrocket.com/create-responsive-mobile-menu-with-css-no-javascript/ */
+.header{
+  background-color: var(--black);
+  box-shadow: 1px 1px 5px 0px var(--gray);
+  position: sticky; // keep the header at the top of the screen during scrolling
+  top: 0;
+  width: 100%; //stretch across the full width of the device
 
+}
+/* Logo */
+.logo{
+  display: inline-block;
+  color: var(--white);
+  font-size: 60px;
+  margin-left: 30px;
+}
 
-nav {
+/* Nav menu */
+.nav{
   width: 100%;
-  background-color: #fff;
-  padding-left: 2rem;
-  padding-right: 1rem;
-  height: 4rem;
-  border-bottom: 1px solid rgba(172, 179, 194, .2);
-  font-size: .7rem;
-  font-weight: 700;
+  height: 100%;
+  position: fixed;
+  background-color: var(--black);
+  overflow: hidden; //any overflow content from the nav element should be hidden
+  max-height: 0;
+  transition: max-height .5s ease-out;
+}
+.menu a{
+  display: block;
+  padding: 30px;
+  color: var(--white);
+}
+.menu a:hover{
+  background-color: var(--gray);
 }
 
-.logo {
-  display: inline-block;
-}
 .active-link{
-  color: green !important;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-
-}
-
-.nav-item > a {
-  display: inline-block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: lightgreen;
-}
-
-.nav-item:hover {
-  background-color: red;
-}
-
-.nav-item:hover a {
-  color: lightblue;
-}
-
-.navbar > img {
-  vertical-align: middle;
+  color: greenyellow !important;
 }
 
 
-@media only screen and (max-width: 768px) {
-  .navbar,
-  .nav-links {
-    flex-direction: column;
+/* Menu Icon */
+.hamb{
+  cursor: pointer;
+  float: right;
+  padding: 40px 20px;
+}/* Style label tag */
+
+.hamb-line {
+  background: var(--white);
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+
+} /* Style span tag */
+
+.hamb-line::before,
+.hamb-line::after{
+  background: var(--white);
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+.hamb-line::before{
+  top: 5px;
+}
+.hamb-line::after{
+  top: -5px;
+}
+
+.side-menu {
+  display: none;
+} /* Hide checkbox */
+
+/* Toggle menu icon */
+.side-menu:checked ~ nav{
+  max-height: 100%;
+}
+.side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top:0;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top:0;
+}
+
+
+/* Responsiveness */
+@media (min-width: 768px) {
+  .nav{
+      max-height: none;
+      top: 0;
+      position: relative;
+      float: right;
+      width: fit-content;
+      background-color: transparent;
+  }
+  .menu li{
+      float: left;
+  }
+  .menu a:hover{
+      background-color: transparent;
+      color: var(--gray);
+
+  }
+
+  .hamb{
+      display: none;
   }
 }
-

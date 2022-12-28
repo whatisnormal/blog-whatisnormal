@@ -1,12 +1,36 @@
-<nav class="navbar">
+<header class="header">
+  <!-- Logo -->
+  <a href="#" class="logo">
+     <img ngSrc="../assets/avocado.svg" width="50" height="50">
+  </a>
+  <!-- Hamburger icon -->
+  <input class="side-menu" type="checkbox" id="side-menu"/>
+  <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+  <!-- Menu -->
+  <nav class="nav">
+      <ul class="menu">
+        <li ><a [routerLink]="['/home']" routerLinkActive="active-link" >Home</a></li>
+        <li ><a [routerLink]="['/articles']" routerLinkActive="active-link">Articles</a></li>
+        <li ><a [routerLink]="['/sandbox']" routerLinkActive="active-link">Sandbox</a></li>
+      </ul>
+  </nav>
+</header>
 
-  <img class="logo" ngSrc="../assets/avocado.svg" width="50" height="50" alt="freeCodeCamp logo">
 
-  <ul class="nav-links">
+<!-- <nav class="navbar">
+
+  <div class="logo-container">
+    <img ngSrc="../assets/avocado.svg" width="50" height="50">
+  </div>
+  <ul class="nav-list" [ngClass]="{'active':showMenu}">
     <li class="nav-item"><a [routerLink]="['/home']" routerLinkActive="active-link" >Home</a></li>
-    <!-- <li class="nav-item"><a [routerLink]="['/articles']" routerLinkActive="router-link-active" >Articles</a></li> -->
     <li class="nav-item"><a  [routerLink]="['/tutorials']" routerLinkActive="active-link">Tutorials</a></li>
     <li class="nav-item"><a  [routerLink]="['/sandbox']" routerLinkActive="active-link">Sandbox</a></li>
 
   </ul>
-</nav>
+  <div class="menu" id="toggle-button" (click)="showMenu = !showMenu">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+</div>
+</nav> -->

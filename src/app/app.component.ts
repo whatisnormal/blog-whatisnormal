@@ -14,5 +14,5 @@ import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
       NavbarComponent]
 })
 export class AppComponent {
-  title = 'angular-tests';
+  title = 'my blog';
 }

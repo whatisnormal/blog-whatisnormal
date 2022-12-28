@@ -4,5 +4,15 @@
   A few years ago, in a software development conference, someone said that every keypress that you make contributes to entropy, so if others don't benefit from them, they're essentially wasted. Therefore, you need to expose the fruits of your labor to others, the more people, the better. This is my attempt at doing so.</p>
 
 </div>
-
-<h2 ><a href="https://blog.kronis.dev/articles">Articles</a></h2>
+<ng-container *ngFor="let section of sections" >
+<h2 ><a [routerLink]="['/articles']">{{section.title}}</a></h2>
+<div style="text-align: center; margin-bottom:10px;">
+  (Feeds:
+  <a href="https://{{siteName}}/{{section.key}}.rss" target="_blank" type="application/rss+xml">RSS</a> |
+  <a href="https://{{siteName}}/{{section.key}}.atom" target="_blank" type="application/atom+xml">Atom</a> |
+  <a href="https://{{siteName}}/{{section.key}}.json" target="_blank" type="application/json">JSON</a> )
+</div>
+<div style="text-align: center;">
+  {{section.description}}
+</div>
+</ng-container>
