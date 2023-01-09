@@ -50,7 +50,7 @@ a.active, a:active, a:focus, a:hover {
 }
 
 /* Responsiveness */
-@media (min-width: 768px) {
+@media (width >= 768px) {
 
 
   :host{

@@ -13,7 +13,14 @@ Little projects and tidbits of knowledge how to do something and my personal exp
   <i id="to-start" class="pulse fa fa-angle-down"></i>
 </section>
 
-<app-cards-list></app-cards-list>
+<div class="cards-list">
+  <ng-container *ngFor="let article of publicArticles" >
+    <app-articles-card [article]="article"></app-articles-card>
+  </ng-container>
+</div>
+
+
+
 <!-- <div class="bricklayer">
     <app-card></app-card>
     <app-card></app-card> -->

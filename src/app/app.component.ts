@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PhotoGalleryComponent } from "./photos/photo-gallery.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 

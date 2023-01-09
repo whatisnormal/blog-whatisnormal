@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { ArticleContentResolver } from './articles-content.resolver';
 import { ArticlesComponent } from './articles.component';
 
 export const ARTICLES_ROUTES: Route[] = [
@@ -8,7 +9,8 @@ export const ARTICLES_ROUTES: Route[] = [
     component: ArticlesComponent
 },
 {
-  path: ':id',
-  component: ArticleDetailsComponent
+  path: ':fileName',
+  component: ArticleDetailsComponent,
+  resolve: {articleContent: ArticleContentResolver  }
 },
 ];
