@@ -26,7 +26,7 @@ bootstrapApplication(AppComponent, {
     ),
     provideRouter(
       APP_ROUTES,
-      withDebugTracing(),
+      // withDebugTracing(),
     )
     // ...
   ]
