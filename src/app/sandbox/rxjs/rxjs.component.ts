@@ -31,14 +31,15 @@ export class RxjsComponent implements OnInit{
   ngOnInit(): void {
 
     // this.sequentialStreams();
-    this.callAggregateIntoSingleArray();
+    //this.callAggregateIntoSingleArray();
+
    // this.mergeStreams();
 
     // this.callMultipleData();
 
     // this.callContinuousData();
 
-    // this.callUserAndCorrespondentPosts();
+     this.callUserAndCorrespondentPosts();
   }
 
   private callContinuousData(){
@@ -47,7 +48,8 @@ export class RxjsComponent implements OnInit{
     combineLatest({
       users: this.users$,
       timerAlwaysEmmiting: timerAlwaysEmmiting$
-    }).subscribe(this.loggingObserver("call when all streams emited at least once."))
+    })
+    .subscribe(this.loggingObserver("call when all streams emited at least once."))
   }
 
   private callMultipleData(){
@@ -61,8 +63,9 @@ export class RxjsComponent implements OnInit{
 
   private callUserAndCorrespondentPosts(){
 
-    this.users$.pipe(switchMap((users : any)=>{ //? converts one observable to another. in this case switch map to forkJoin.
-      return forkJoin(this.converUsersToPostsObservables(users))
+    this.users$.pipe(
+      switchMap((users : any)=>{ //? converts one observable to another. in this case switch map to forkJoin.
+      return forkJoin(this.converUsersToPostsObservables(users)) //combines all sub-observables and emits 1x once all are completed . Does the same as 'callAggregateIntoSingleArray' up to 'toArray'
     }
     )).subscribe(this.loggingObserver("callUserAndCorrespondentPosts"))
   }
@@ -81,7 +84,8 @@ export class RxjsComponent implements OnInit{
   }
 
   private sequentialStreams(){
-    concat(this.users$, this.posts$).subscribe(this.loggingObserver("one stream after another."))
+    concat(this.users$, this.posts$) // calls multiple streams as input in order, from left to right.
+    .subscribe(this.loggingObserver("one stream after another."))
   }
 
   private mergeStreams(){
@@ -95,16 +99,18 @@ export class RxjsComponent implements OnInit{
   private loggingObserver(name: string){
     return {
       next: (data : any)=>{
-        console.log(`[${name}]:`, data);
-        this.data = data;
+        console.log(`%c [${name}]`,  'background: #222; color: #bada55');
+        console.dir(data, {depth: null, colors: true})
+        this.data = JSON.stringify(data, null, '\t');;
       },
       error: (error : Error)=>{
         //  Se umas das N requisições der erro, est
-        console.error(`[${name}]:`, error);
+        console.error(`[${name}]:`, error,  'background: #222; color: #bada55');
       },
       complete: ()=>{
         //  Se umas das N requisições der erro, est
-        console.log(`[${name}]: observable stream completed`);
+
+        console.log(`%c [${name}]: observable stream completed`, 'background: #222; color: #bada55');
       }
 
     }
