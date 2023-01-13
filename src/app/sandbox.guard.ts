@@ -11,7 +11,7 @@ export class SandboxGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-    return !!route.queryParamMap.get('tests');
+    return !!route.queryParamMap.get('option');
   }
 
 }
