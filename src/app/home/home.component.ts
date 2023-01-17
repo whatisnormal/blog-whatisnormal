@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { BASE_URL } from '../inject-tokens';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
 
-  readonly siteName :string ="whatisnormal.github.io";
+  readonly siteName :string ="";
+
+  constructor( @Inject(BASE_URL) private baseUrl: string,
+  ){
+    this.siteName = baseUrl;
+  }
 
   sections = [
     {

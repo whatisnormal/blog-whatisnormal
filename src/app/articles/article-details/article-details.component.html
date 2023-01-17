@@ -1,1 +1,7 @@
-<div [innerHtml]="articleContent"></div>
+<h1>{{articleData.article.title}}</h1>
+
+<div [innerHtml]="articleData.content"></div>
+
+<mat-chip-listbox aria-label="Article tags">
+  <mat-chip-option *ngFor="let tag of articleData.article.tags">{{tag}}</mat-chip-option>
+</mat-chip-listbox>

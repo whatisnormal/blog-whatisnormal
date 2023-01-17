@@ -5,7 +5,7 @@
 
 </div>
 <ng-container *ngFor="let section of sections" >
-<h2 ><a [routerLink]="['/articles']">{{section.title}}</a></h2>
+<h2 ><a [routerLink]="[section.key]">{{section.title}}</a></h2>
 <div style="text-align: center; margin-bottom:10px;">
   (Feeds:
   <a href="https://{{siteName}}/{{section.key}}.rss" target="_blank" type="application/rss+xml">RSS</a> |

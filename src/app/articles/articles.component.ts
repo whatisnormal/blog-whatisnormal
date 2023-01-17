@@ -7,6 +7,7 @@ import { articles } from './repo';
 import { Article } from '../models';
 import { forkJoin, from, mergeMap } from 'rxjs';
 import { ArticlesCardComponent } from "./articles-card/articles-card.component";
+import { ARTICLES, BASE_URL } from '../inject-tokens';
 
 @Component({
     selector: 'app-articles',
@@ -21,19 +22,13 @@ export class ArticlesComponent implements OnInit{
   sanitizer = inject(DomSanitizer);
 
   publicArticles :Article[] = [];
-  constructor(@Inject('articles') private articles:Article[] ,private http:HttpClient){
+
+
+  constructor( @Inject(BASE_URL) public baseUrl: string,@Inject(ARTICLES) private articles:Article[] ,private http:HttpClient){
     this.publicArticles = this.articles;
   }
   ngOnInit(): void {
-    // from(articles).pipe(
-    //   mergeMap((articles : Article[])=> forkJoin(articles.map()) )
-    // );
-    // articles.forEach((article: Article)=>{
 
-    // });
-    // this.http.get('../assets/articles/test-article.html',{responseType:'text'}).subscribe(res=>{
-    //   this.KisshtHtml = this.sanitizer.bypassSecurityTrustHtml(res);
-    // })
   }
 
 }

@@ -6,4 +6,5 @@ export interface Article{
   coverImgPath: string;
   publishedDate:string;
   intro?:SafeHtml;
+  tags?:string[]
 }

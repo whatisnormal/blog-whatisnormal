@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Sanitizer } from '@angular/core';
+import { Inject, Injectable, Sanitizer } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {
   Router, Resolve,
@@ -7,6 +7,8 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
+import { ARTICLES } from '../inject-tokens';
+import { Article } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +16,23 @@ import { map, Observable, of } from 'rxjs';
 export class ArticleContentResolver implements Resolve<SafeHtml> {
 
 
-  constructor(private httpClient : HttpClient, private sanitizer : DomSanitizer){
+  constructor(private httpClient : HttpClient, private sanitizer : DomSanitizer,@Inject(ARTICLES) private articles: Article[],
+  ){
 
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<SafeHtml> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{article: Article,content: SafeHtml}> {
     const fileName = route.paramMap.get('fileName');
+    const article : Article= this.articles.find((article: Article)=> article.fileName === fileName) as Article;
+
     const relativeFileName = `../assets/articles/${fileName}.html`;
     return this.httpClient.get(relativeFileName,{responseType:'text'}).pipe(
-      map((html : string)=>this.sanitizer.bypassSecurityTrustHtml(html))
+      map((html : string)=> {
+         return {
+          article,
+          content: this.sanitizer.bypassSecurityTrustHtml(html)
+        }
+        })
     );
   }
 }

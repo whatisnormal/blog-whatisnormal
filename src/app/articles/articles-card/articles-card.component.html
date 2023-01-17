@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="article$ | async as article">
   <div class="card-image">
     <!-- <a href="/tutorials/what-to-do-when-a-disk-dies"><img style="width: 100%; height: 30%;" alt="" [src]="article.coverImgPath" ></a> -->
     <a [routerLink]="['/articles',article.fileName]"><img style="width: 100%; height: 30%;" alt="" [src]="article.coverImgPath" ></a>

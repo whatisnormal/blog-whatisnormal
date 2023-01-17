@@ -1,45 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { combineLatest, concat, forkJoin, interval, map, merge, mergeAll, mergeMap, of, scan, Subject, switchMap, take, toArray } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MockDataService } from './mock-data.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rxjs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatFormFieldModule, MatSelectModule,FormsModule, MatInputModule],
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.scss']
 })
 export class RxjsComponent implements OnInit{
-  private entityEditedSubject : Subject<number> = new Subject();
-  entityEdited$ = this.entityEditedSubject.asObservable();
+
+changedOption(selectedOptionid: number) {
+  switch(selectedOptionid){
+    case 1:
+      this.sequentialStreams();
+      break;
+    case 2:
+      this.callAggregateIntoSingleArray();
+      break;
+    case 3:
+      this.mergeStreams();
+      break;
+    case 4:
+      this.callMultipleData();
+      break;
+    case 5:
+      this.callContinuousData();
+      break;
+    case 6:
+      this.callUserAndCorrespondentPosts();
+      break;
+  }
+}
+
 
   data : any;
 
   users$ = this.http.get("https://jsonplaceholder.typicode.com/users");
   posts$ = this.http.get("https://jsonplaceholder.typicode.com/posts");
 
-  notifyEdit(entityId: number){
-    this.entityEditedSubject.next(entityId);
-  }
+
+
+  rxJsSelectOptions:  {id: number, desc: string, function? : any}[] = [
+    {
+      id: 0, desc: "None",
+    },
+    {
+      id: 1, desc: "concat: one stream after another",
+    },
+    {
+      id: 2, desc: "callAggregateIntoSingleArray",
+    },
+    {
+      id: 3, desc: "callAggregateIntoSingleArray",
+    },
+    {
+      id: 4, desc: "callAggregateIntoSingleArray",
+    },
+    {
+      id: 5, desc: "callAggregateIntoSingleArray",
+    },
+    {
+      id: 6, desc: "callAggregateIntoSingleArray",
+    },
+  ];
+
+  selectedOptionId : number = this.rxJsSelectOptions?.[0]?.id;
+
+
 
   constructor(private http : HttpClient, private mockDataService : MockDataService){
 
   }
 
   ngOnInit(): void {
-
-    // this.sequentialStreams();
-    //this.callAggregateIntoSingleArray();
-
-   // this.mergeStreams();
-
-    // this.callMultipleData();
-
-    // this.callContinuousData();
-
-     this.callUserAndCorrespondentPosts();
   }
 
   private callContinuousData(){
@@ -85,7 +127,7 @@ export class RxjsComponent implements OnInit{
 
   private sequentialStreams(){
     concat(this.users$, this.posts$) // calls multiple streams as input in order, from left to right.
-    .subscribe(this.loggingObserver("one stream after another."))
+    .subscribe(this.loggingObserver("concat: one stream after another."))
   }
 
   private mergeStreams(){
