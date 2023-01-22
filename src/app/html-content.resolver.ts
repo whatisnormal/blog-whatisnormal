@@ -22,11 +22,10 @@ export class HtmlContentResolver implements Resolve<SafeHtml> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{article: Article,content: SafeHtml}> {
-    const articleType = route.data['articleType'];
     const fileName = route.paramMap.get('fileName');
 
     const article : Article= this.articles.find((article: Article)=> article.fileName === fileName) as Article;
-    const relativeFileName = `../assets/${articleType}/${fileName}.html`;
+    const relativeFileName = `../assets/${article.articleType}/${fileName}.html`;
 
     return this.httpClient.get(relativeFileName,{responseType:'text'}).pipe(
       map((html : string)=> {

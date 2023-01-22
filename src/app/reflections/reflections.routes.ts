@@ -14,7 +14,6 @@ export const REFLECTIONS_ROUTES: Route[] = [
   path: ':fileName',
   component: ArticleDetailsComponent,
   resolve: {articleContent: HtmlContentResolver  },
-  data: { articleType: 'reflections' }
 
 },
 ];

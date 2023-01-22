@@ -14,7 +14,6 @@ export const TUTORIALS_ROUTES: Route[] = [
   path: ':fileName',
   component: ArticleDetailsComponent,
   resolve: {articleContent: HtmlContentResolver  },
-  data: { articleType: 'tutorials' }
 
 },
 ];
