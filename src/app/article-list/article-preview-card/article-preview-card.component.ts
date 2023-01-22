@@ -5,13 +5,13 @@ import { RouterLink } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-articles-card',
+  selector: 'app-article-preview-card',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './articles-card.component.html',
-  styleUrls: ['./articles-card.component.scss']
+  templateUrl: './article-preview-card.component.html',
+  styleUrls: ['./article-preview-card.component.scss']
 })
-export class ArticlesCardComponent {
+export class ArticlePreviewCardComponent {
 
   private artSubj = new BehaviorSubject<Article|undefined>(undefined);
   article$ = this.artSubj.asObservable();

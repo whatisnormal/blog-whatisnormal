@@ -7,13 +7,13 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
-import { ARTICLES } from '../inject-tokens';
-import { Article } from '../models';
+import { ARTICLES } from './inject-tokens';
+import { Article } from './models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleContentResolver implements Resolve<SafeHtml> {
+export class HtmlContentResolver implements Resolve<SafeHtml> {
 
 
   constructor(private httpClient : HttpClient, private sanitizer : DomSanitizer,@Inject(ARTICLES) private articles: Article[],
@@ -22,10 +22,12 @@ export class ArticleContentResolver implements Resolve<SafeHtml> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{article: Article,content: SafeHtml}> {
+    const articleType = route.data['articleType'];
     const fileName = route.paramMap.get('fileName');
-    const article : Article= this.articles.find((article: Article)=> article.fileName === fileName) as Article;
 
-    const relativeFileName = `../assets/articles/${fileName}.html`;
+    const article : Article= this.articles.find((article: Article)=> article.fileName === fileName) as Article;
+    const relativeFileName = `../assets/${articleType}/${fileName}.html`;
+
     return this.httpClient.get(relativeFileName,{responseType:'text'}).pipe(
       map((html : string)=> {
          return {

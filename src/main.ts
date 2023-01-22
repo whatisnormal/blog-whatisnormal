@@ -6,8 +6,7 @@ import { importProvidersFrom } from '@angular/core';
 import { provideRouter, withDebugTracing } from '@angular/router';
 import { APP_ROUTES } from './app/app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { Article } from './app/models';
-import { articles } from './app/articles/repo';
+import { articles } from './app/repo';
 import { APP_CONFIG, ARTICLES, BASE_URL } from './app/inject-tokens';
 
 const CONFIG = {
@@ -17,7 +16,7 @@ const CONFIG = {
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: ARTICLES, useValue: articles },
-    { provide: BASE_URL, useValue: '"whatisnormal.github.io' },
+    { provide: BASE_URL, useValue: 'whatisnormal.github.io' },
     { provide: APP_CONFIG, useValue: CONFIG },
     provideHttpClient(withInterceptors([
         (req, next) => {

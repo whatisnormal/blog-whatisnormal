@@ -1,0 +1,23 @@
+<section  class="hero">
+  <section class="container grid-lg" style="text-align: center">
+      <div style="text-align: center; margin-top:10px;">
+        <h1 class="blog-header"> {{title}} </h1>
+
+        (Feeds:
+        <a href="https://{{baseUrl}}/{{articleType}}.rss" target="_blank" type="application/rss+xml">RSS</a> |
+        <a href="https://{{baseUrl}}/{{articleType}}.atom" target="_blank" type="application/atom+xml">Atom</a> |
+        <a href="https://{{baseUrl}}/{{articleType}}.json" target="_blank" type="application/json">JSON</a> )
+        <p><br>
+          {{intro}}</p>
+      </div>
+
+  </section>
+  <i id="to-start" class="pulse fa fa-angle-down"></i>
+</section>
+
+<div class="cards-list">
+  <ng-container *ngFor="let article of publicArticles" >
+    <app-article-preview-card [article]="article"></app-article-preview-card>
+  </ng-container>
+</div>
+

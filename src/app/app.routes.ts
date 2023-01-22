@@ -14,19 +14,17 @@ export const APP_ROUTES: Route[] = [
     component: HomeComponent
 },
 {
-  path: 'articles',
+  path: 'reflections',
   loadChildren: () =>
-      import('./articles/articles.routes')
-          .then(m => m.ARTICLES_ROUTES)
+      import('./reflections/reflections.routes')
+          .then(m => m.REFLECTIONS_ROUTES)
 },
-
-// Option 2: Directly Lazy Loading a Standalone Component
-// {
-//   path: 'sandbox',
-//   loadComponent: () =>
-//       import('./sandbox/sandbox.component')
-//           .then(m => m.SandboxComponent)
-// },
+{
+  path: 'tutorials',
+  loadChildren: () =>
+      import('./tutorials/tutorials.routes')
+          .then(m => m.TUTORIALS_ROUTES)
+},
 {
   path: 'sandbox',
   loadChildren: () =>

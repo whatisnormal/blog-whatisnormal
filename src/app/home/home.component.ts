@@ -21,9 +21,14 @@ export class HomeComponent {
 
   sections = [
     {
-      key :"articles",
-      title: "Articles",
-      description: "Opinion pieces, commentary on existing technologies and some of the stuff that's happening in the world."
+      key :"reflections",
+      title: "Reflections",
+      description: "Opinion pieces, commentary on a plethora of topics happening. Technology? My Country? Society? Probably will be here"
+    },
+    {
+      key :"tutorials",
+      title: "Tutorials",
+      description: "Quick bytes of knowledge on how to do something, usually small 😁."
     }
   ]
 

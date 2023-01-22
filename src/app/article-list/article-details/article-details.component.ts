@@ -20,7 +20,6 @@ export class ArticleDetailsComponent implements OnInit{
   articleData! : {article: Article, content: SafeHtml}
 
   ngOnInit(): void {
-    console.log("ngOnInit: article-details");
     this.articleData = this.route.snapshot.data['articleContent'];
   }
 

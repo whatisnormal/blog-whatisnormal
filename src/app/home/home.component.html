@@ -1,18 +1,25 @@
-<div>
-  <h1 class="header">Welcome to my blog</h1>
-<p><br>
-  A few years ago, in a software development conference, someone said that every keypress that you make contributes to entropy, so if others don't benefit from them, they're essentially wasted. Therefore, you need to expose the fruits of your labor to others, the more people, the better. This is my attempt at doing so.</p>
+<div class="hero">
+  <h1 class="header">What is normal?</h1>
+  <h3 class="header">because normality is a myth...</h3>
+  <br>
+  <p>
+    Ive read about the <a  href="https://www.hanselman.com/blog/dark-matter-developers-the-unseen-99">99% Dark Matter Developers</a> some years ago (while the same applies to 99% of the internet readers),
+    and since then it inspired me to enter the remaining 1% and share some ideas, reflections or even simple stuff that ive learned and could help someone else.
+    I dont do it for the sake of publicity, image or other show-off brand awareness, but as @andrew humber says when he got asked why he always wears a full black shirt hidding his tattoos, he mentions that he is not the focus, but the message he is trying to channel.
 
+  </p>
 </div>
-<ng-container *ngFor="let section of sections" >
-<h2 ><a [routerLink]="[section.key]">{{section.title}}</a></h2>
-<div style="text-align: center; margin-bottom:10px;">
-  (Feeds:
-  <a href="https://{{siteName}}/{{section.key}}.rss" target="_blank" type="application/rss+xml">RSS</a> |
-  <a href="https://{{siteName}}/{{section.key}}.atom" target="_blank" type="application/atom+xml">Atom</a> |
-  <a href="https://{{siteName}}/{{section.key}}.json" target="_blank" type="application/json">JSON</a> )
+
+
+  <div class="sections" *ngFor="let section of sections">
+  <h2><a [routerLink]="['/',section.key]">{{section.title}}</a></h2>
+  <div style="text-align: center; margin-bottom:10px;">
+    (Feeds:
+    <a href="https://{{siteName}}/{{section.key}}.rss" target="_blank" type="application/rss+xml">RSS</a> |
+    <a href="https://{{siteName}}/{{section.key}}.atom" target="_blank" type="application/atom+xml">Atom</a> |
+    <a href="https://{{siteName}}/{{section.key}}.json" target="_blank" type="application/json">JSON</a> )
+  </div>
+  <div style="text-align: center;">
+    {{section.description}}
+  </div>
 </div>
-<div style="text-align: center;">
-  {{section.description}}
-</div>
-</ng-container>

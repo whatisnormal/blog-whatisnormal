@@ -1,18 +1,15 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { combineLatest, concat, forkJoin, interval, map, merge, mergeAll, mergeMap, of, scan, Subject, switchMap, take, toArray } from 'rxjs';
+import { combineLatest, concat, forkJoin, from, interval, map, merge, mergeAll, mergeMap, of, scan, Subject, switchMap, take, tap, toArray } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MockDataService } from './mock-data.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 
-import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rxjs',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule,FormsModule, MatInputModule],
+  imports: [CommonModule],
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.scss']
 })
@@ -82,6 +79,7 @@ changedOption(selectedOptionid: number) {
   }
 
   ngOnInit(): void {
+    this.test();
   }
 
   private callContinuousData(){
@@ -110,6 +108,26 @@ changedOption(selectedOptionid: number) {
       return forkJoin(this.converUsersToPostsObservables(users)) //combines all sub-observables and emits 1x once all are completed . Does the same as 'callAggregateIntoSingleArray' up to 'toArray'
     }
     )).subscribe(this.loggingObserver("callUserAndCorrespondentPosts"))
+  }
+
+  private test(){
+    of([1,2], [3,4], [5,6], [7,8]).
+    pipe(
+      switchMap((id : number[])=>{
+        return from(id)
+      }),
+      tap(console.log),
+      mergeMap((id : number)=>{ //calls all posts in parallel, without any order and merges into a single observable that will emit once by each  merged sub-observable.
+      return this.mockDataService.getPostsByUserId$(id);
+    }),
+    tap(console.log),
+    toArray(), //puts each post array into a single array of arrays
+    tap(console.log),
+
+    map((masterArray : any[])=>{ // transforms the array of arrays into a flattened single array.
+      return masterArray.flat();
+    })
+    ).subscribe(this.loggingObserver("callAggregateIntoSingleArray"))
   }
 
   private callAggregateIntoSingleArray(){

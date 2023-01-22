@@ -1,12 +1,13 @@
+
+
 .card {
-  display: flex;
-  flex-direction: column;
-  border: .05rem solid #e7e9ed;
-  border-radius: .1rem;
-  background: #fff;
-  margin-bottom: 25px;
-  border: 0;
+  flex: 1 1 150px;
+  inline-size: 300px;
+  margin-inline: 10px;
+  margin-bottom: 20px;
   box-shadow: 0 10px 45px -9px rgba(0,0,0,.1);
+  border: .05rem solid #e7e9ed;
+  border-radius: 1rem;
 }
 
 a.active, a:active, a:focus, a:hover {
@@ -52,10 +53,6 @@ a.active, a:active, a:focus, a:hover {
 /* Responsiveness */
 @media (width >= 768px) {
 
-
-  :host{
-    flex-basis: 45%;
-  }
 
 
 }
