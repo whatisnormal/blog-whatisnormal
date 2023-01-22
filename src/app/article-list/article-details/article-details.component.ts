@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SafeHtml } from '@angular/platform-browser';
-import { MatChipsModule } from '@angular/material/chips';
 import { Article } from 'src/app/models';
 
 @Component({
   selector: 'app-article-details',
   standalone: true,
-  imports: [CommonModule, MatChipsModule],
+  imports: [CommonModule],
   templateUrl: './article-details.component.html',
   styleUrls: ['./article-details.component.scss']
 })
