@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SandboxGuard } from './sandbox.guard';
-import { SandboxComponent } from './sandbox/sandbox.component';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -24,14 +23,6 @@ export const APP_ROUTES: Route[] = [
   loadChildren: () =>
       import('./tutorials/tutorials.routes')
           .then(m => m.TUTORIALS_ROUTES)
-},
-{
-  path: 'sandbox',
-  loadChildren: () =>
-      import('./sandbox/sandbox.routes')
-          .then(m => m.SANDBOX_ROUTES),
-          canActivate: [SandboxGuard]
-
 },
 
 ];
