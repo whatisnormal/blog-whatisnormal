@@ -7,7 +7,7 @@ export const REFLECTIONS_ROUTES: Route[] = [
 {
     path: '',
     component: ArticleListComponent,
-    data: { articleType: 'reflections', title:'Reflections', intro: 'Thoughts about certain topics! 🤔' }
+    data: { articleType: 'reflections', title:'Reflections', intro: 'Opinion pieces, commentary on a plethora of topics happening. Technology? My Country? Society? Probably will be here' }
 
 },
 {

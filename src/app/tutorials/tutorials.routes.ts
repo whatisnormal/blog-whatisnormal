@@ -7,7 +7,7 @@ export const TUTORIALS_ROUTES: Route[] = [
 {
     path: '',
     component: ArticleListComponent,
-    data: { articleType: 'tutorials', title:'Tutorials', intro: 'Thoughts about certain topics! 🤔' }
+    data: { articleType: 'tutorials', title:'Tutorials', intro: 'Quick bytes of knowledge on how to do something, usually small 😁.' }
 
 },
 {

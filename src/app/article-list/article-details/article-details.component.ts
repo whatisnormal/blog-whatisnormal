@@ -20,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit{
 
   ngOnInit(): void {
     this.articleData = this.route.snapshot.data['articleContent'];
-    this.meta.addTag({name:'keywords', content:  (this.articleData.article.tags as string[]).join(',')})
+    this.meta.updateTag({name:'keywords', content:  (this.articleData.article.tags as string[]).join(',')})
   }
 
 }
