@@ -2,12 +2,13 @@ p {
   color: green;
 }
 
-.title{
+.title, .title + h3, .content{
   margin-bottom: 2rem;
 }
 
-.content{
-  margin-bottom: 2rem;
+.center-childs{
+  display: flex;
+  justify-content: center;
 }
 
 .tags {

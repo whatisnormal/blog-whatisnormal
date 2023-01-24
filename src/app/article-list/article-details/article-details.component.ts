@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { SafeHtml } from '@angular/platform-browser';
+import { Meta, SafeHtml } from '@angular/platform-browser';
 import { Article } from 'src/app/models';
 
 @Component({
@@ -13,13 +13,14 @@ import { Article } from 'src/app/models';
 })
 export class ArticleDetailsComponent implements OnInit{
 
-  constructor(private route : ActivatedRoute){
+  constructor(private route : ActivatedRoute,private meta: Meta){
   }
 
   articleData! : {article: Article, content: SafeHtml}
 
   ngOnInit(): void {
     this.articleData = this.route.snapshot.data['articleContent'];
+    this.meta.addTag({name:'keywords', content:  (this.articleData.article.tags as string[]).join(',')})
   }
 
 }

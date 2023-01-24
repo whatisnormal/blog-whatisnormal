@@ -1,7 +1,10 @@
 <h1 class="title">{{articleData.article.title}}</h1>
+<h3>{{articleData.article.publishedDate}}</h3>
+<div class="center-childs"><img [src]="articleData.article.coverImgPath" alt=""></div>
 
-<div class="content" [innerHtml]="articleData.content"></div>
+<div class="content" [innerHtml]="articleData.content">
 
+</div>
 
 <ul class="tags">
   <li *ngFor="let tag of articleData.article.tags"><a href="#" class="tag">{{tag}}</a></li>

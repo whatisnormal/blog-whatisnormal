@@ -1,12 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // https://sass-lang.com/guide
-//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"); /* import font */
 
-// html {
-//   box-sizing: border-box;
-
-// }
 
 :root{
   --white: #f9f9f9;
@@ -24,14 +19,6 @@ body {
   background-color: var(--white);
   font-family: "Poppins", sans-serif;
   min-width: 300px;
-
-
-  // font-size: .8rem;
-  // overflow-x: hidden;
-  // color: #50596c;
-  // background: #fff;
-  // text-rendering: optimizeLegibility;
-
 }
 
 a{
@@ -41,16 +28,24 @@ ul{
   list-style: none;
 }
 
-// h1, h2, h3, h4, h5, h6{
-//   font-family: 'PT Sans', --apple-system,system-ui, BlinkMacSystemFont, sans-serif ;
-//   font-weight: bold !important;
-// }
 app-article-details{
-  .test{
-    color: red;
+  ul{
+    list-style: square;
+  }
+
+  code{
+    background-color: gainsboro;
+  }
+
+  pre:has(code){
+    background-color: gainsboro;
+  }
+
+  ul> ul{
+    list-style-position: inside;
+  }
+  section{
+    padding-left: 2rem;
   }
 }
 
-
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

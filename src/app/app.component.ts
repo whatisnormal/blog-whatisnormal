@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.titleService.setTitle('Whatisnormal reflections');
-    this.meta.addTag({name: 'whatisnormal',content: 'zé'});
-    this.meta.addTag({name: 'description',content: 'My blog'});
+    this.meta.addTag({name: 'author',content: 'whatisnormal'});
+    this.meta.addTag({name: 'description',content: 'Thoughts about the world or even quick bytes on how to do something.'});
+    this.meta.addTag({name: 'keywords',content: 'Tutorials, Reflections'});
   }
 }
