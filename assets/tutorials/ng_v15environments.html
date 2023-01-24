@@ -1,8 +1,58 @@
 <p>
   You have created a project with the shiny new  Angular V15 (Who does not want standalone components right?)..but wait a minute? where are the environments configs?
-   If you are in v15, bad luck as you will need to create the environment folders and what is necessary in angular.json manually.
-   Still, the angular team created a branch new schematic in v.15.1 that solves the gap. Just run:
-   <pre>ng g environments</pre>
+  Disappeared?
 </p>
 
-https://stackoverflow.com/questions/74558182/angular-15-cli-does-not-create-environments-folder-when-creating-an-angular-proj
+<p>
+  If you are in v15, bad luck as you will need to create the environment folders and add what is necessary manually in <code>angular.json</code>
+</p>
+<br>
+
+<p>
+  Still, the angular team created a brand new schematic in v.15.1 that solves the gap. Just run:
+  <br>
+  <code>ng g environments</code>
+</p>
+<br>
+
+<h3>What if im in v15.0?</h3>
+<p>
+  Then follow these steps:
+</p>
+<br>
+<section>
+  <ul>
+    <li>Create environments directory.</li>
+    <li>Create your custom environments.</li>
+    <ul>
+        <li>environment.ts</li>
+        <li>environment.prod.ts</li>
+        <li>environment.stating.ts</li>
+    </ul>
+    <li>Update your <code>angular.json</code> to do <code>fileReplacements</code> where the paths are from project root to the environment file for <code>replace</code>
+    and <code>with:</code>
+    <pre>
+      <code>
+        "configurations": {
+          "production": {
+             ...
+             "fileReplacements": [
+               {
+                 "replace": "apps/some-app/src/environments/environment.ts",
+                 "with": "apps/some-app/src/environments/environment.prod.ts"
+               }
+             ],
+           },
+           "development": {
+             ...
+           }
+         },
+         "defaultConfiguration": "production"
+       },
+      </code>
+    </pre>
+
+    </li>
+  </ul>
+
+</section>
